@@ -4,35 +4,16 @@
 
 {% block body %}
     <section class="articles">
+        {% for article in articles %}
         <article>
-            <h2>Titre de l'article</h2>
-            <div class="metadata">Ecrit le 10/02/2020 à 19:00</div>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata">Créer le {{ article.createdAt | date('d/m/Y') }}</div>
             <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam totam neque provident beatae, excepturi labore.</p>
-                <p>Aspernatur unde sit, architecto ullam et nobis vero libero rem dignissimos! Mollitia laboriosam praesentium omnis?</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">lire la suite</a>
+                <img src="{{ article.image }}" alt="">
+                <p>{{ article.content | raw }}</p>
+                <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">lire la suite</a>
             </div>
         </article>
-        <article>
-            <h2>Titre de l'article</h2>
-            <div class="metadata">Ecrit le 10/02/2020 à 19:00</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Dolore minus, doloremque tempora accusantium est culpa? Maxime eaque nobis itaque deleniti odio possimus voluptate?</p>
-                <p>Doloremque maiores aspernatur vitae laboriosam odio quo mollitia asperiores perferendis architecto. Aliquid neque illo reiciendis!</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">lire la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Titre de l'article</h2>
-            <div class="metadata">Ecrit le 10/02/2020 à 19:00</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Inventore repudiandae alias labore tenetur natus error sit totam nam ad accusamus. Adipisci, voluptates consectetur.</p>
-                <p>Sit tempore, veniam voluptatem quia reiciendis reprehenderit possimus, iusto ipsam, dignissimos pariatur sapiente quod ab?</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">lire la suite</a>
-            </div>
-        </article>
+        {% endfor %}
     </section>
 {% endblock %}
